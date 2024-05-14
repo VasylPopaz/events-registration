@@ -1,7 +1,13 @@
 import { format } from "date-fns";
 import { Link } from "react-router-dom";
 
-export const EventsListItem = (event) => {
+import { Event } from "../../types";
+
+interface EventListItemProps {
+  event: Event;
+}
+
+export const EventsListItem: React.FC<EventListItemProps> = ({ event }) => {
   return (
     <li className="text-[#b5b6b6] p-[18px] bg-[#0e223b] rounded-[18px] w-[100%] md:w-[342px] lg:w-[516px] lg:p-[24px]">
       <h2 className="font-semibold text-[20px]">{event.title}</h2>
