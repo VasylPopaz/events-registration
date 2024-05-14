@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getEventById, getEvents } from "../api/api";
+import { getEvents } from "../api/api";
 import { EventsList } from "../components";
 
 const EventsBoard = () => {
@@ -9,8 +9,7 @@ const EventsBoard = () => {
   }, []);
 
   return (
-    <section className="container">
-      <h2>Events</h2>
+    <section className="container py-[40px]">
       <EventsList events={events} />
     </section>
   );

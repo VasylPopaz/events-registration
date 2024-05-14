@@ -12,7 +12,7 @@ function App() {
       <Route element={<SharedLayout />}>
         <Route path="/" element={<Home />} />
         <Route path="/registration/:eventId" element={<EventRegistration />} />
-        <Route path="/participants" element={<EventParticipants />} />
+        <Route path="/participants/:eventId" element={<EventParticipants />} />
         <Route path="/board" element={<EventsBoard />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Route>
