@@ -6,6 +6,11 @@ export default {
       md: "768px",
       lg: "1158px",
     },
+    fontFamily: {
+      "poppins-regular": ["Poppins-Regular", "sans-serif"],
+      "poppins-medium": ["Poppins-Medium", "sans-serif"],
+      "poppins-semibold": ["Poppins-SemiBold", "sans-serif"],
+    },
     extend: {},
   },
   corePlugins: {
@@ -17,6 +22,7 @@ export default {
       const paddingXLg = "15px";
       addComponents({
         body: {
+          // fontFamily: "font-poppins-regular",
           backgroundColor: "#24252A",
           color: "#edf0f1",
         },
@@ -44,8 +50,7 @@ export default {
       addComponents({
         ".nav-link": {
           position: "relative",
-          paddingInline: "6px",
-          paddingBlock: "6px",
+          padding: "6px",
           borderRadius: "18px",
           transition: "background-color 0.3s",
           "&:hover": {
@@ -53,6 +58,27 @@ export default {
           },
           "&.active": {
             backgroundColor: "#4e4e69",
+          },
+        },
+      });
+      addComponents({
+        ".link": {
+          position: "relative",
+          "&::after": {
+            content: "''",
+            position: "absolute",
+            left: "0",
+            bottom: "0",
+            width: "100%",
+            height: "2px",
+            backgroundColor: "#4278c8",
+            transition: "transform 0.7s",
+            transformOrigin: "right",
+            transform: "scaleX(0)",
+          },
+          "&:hover::after": {
+            transform: "scaleX(1)",
+            transformOrigin: "left",
           },
         },
       });
