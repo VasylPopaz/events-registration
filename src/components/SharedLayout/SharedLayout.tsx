@@ -6,7 +6,7 @@ export const SharedLayout = () => {
   return (
     <>
       <Header />
-      <main>
+      <main className="container">
         <Suspense>
           <Outlet />
         </Suspense>

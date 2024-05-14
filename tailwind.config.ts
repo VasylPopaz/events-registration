@@ -44,7 +44,7 @@ export default {
       addComponents({
         ".nav-link": {
           position: "relative",
-          paddingInline: "4px",
+          paddingInline: "6px",
           paddingBlock: "6px",
           borderRadius: "18px",
           transition: "background-color 0.3s",

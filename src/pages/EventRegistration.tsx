@@ -1,4 +1,4 @@
 const EventRegistration = () => {
-  return <div>EventRegistration</div>;
+  return <section className="container">EventRegistration</section>;
 };
 export default EventRegistration;

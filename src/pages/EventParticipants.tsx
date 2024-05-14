@@ -1,4 +1,4 @@
 const EventParticipants = () => {
-  return <div>EventParticipants</div>;
+  return <section className="container">EventParticipants</section>;
 };
 export default EventParticipants;
