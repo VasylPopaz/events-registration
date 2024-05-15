@@ -8,7 +8,7 @@ export const Filter: React.FC<ParticipantsListProps> = ({ participants }) => {
       initialValues={{
         filter: "",
       }}
-      onSubmit={(values) => {}}
+      onSubmit={() => {}}
     >
       {() => (
         <Form className=" w-[450px] mx-auto flex flex-col gap-[30px] justify-center shadow-custom-inset p-[40px] rounded-[18px]">
