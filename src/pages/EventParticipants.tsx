@@ -34,7 +34,7 @@ const EventParticipants = () => {
       <h2 className="font-semibold text-[38px] text-left mb-[10px]">
         "{event?.title}" Event {!participants.length && " has no "} participants
       </h2>
-      <Filter participants={participants} />
+      <Filter />
       <ParticipantsList participants={participants} />
     </section>
   );

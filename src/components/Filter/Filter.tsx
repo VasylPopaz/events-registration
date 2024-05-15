@@ -1,21 +1,23 @@
 import { Field, Form, Formik } from "formik";
-import { ParticipantsListProps } from "../../types";
 
-export const Filter: React.FC<ParticipantsListProps> = ({ participants }) => {
-  console.log(participants);
+export const Filter = () => {
   return (
     <Formik
       initialValues={{
         filter: "",
       }}
-      onSubmit={() => {}}
+      onSubmit={(values) => {
+        console.log(values);
+      }}
     >
-      {() => (
-        <Form className=" w-[450px] mx-auto flex flex-col gap-[30px] justify-center shadow-custom-inset p-[40px] rounded-[18px]">
+      {({ handleChange }) => (
+        <Form className="mb-[10px]">
           <Field
             className="fieldStyles"
-            placeholder="Find participants by name"
+            name="filter"
+            placeholder="Find participants by name or email"
             type="text"
+            onChange={handleChange}
           />
         </Form>
       )}
