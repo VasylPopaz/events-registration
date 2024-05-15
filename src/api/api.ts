@@ -1,19 +1,32 @@
 import axios from "axios";
 
-import { Event } from "../types";
+import {
+  IEvent,
+  IEventResponse,
+  IParticipant,
+  IParticipantExceptId,
+} from "../types";
 
 const instance = axios.create({
   baseURL: "https://events-registration-app-backend-w9jw.onrender.com/api",
 });
 
-export const getEvents = async (): Promise<Event[]> => {
+export const getEvents = async (): Promise<IEventResponse> => {
   const { data } = await instance.get("/events");
 
   return data;
 };
 
-export const getEventById = async (id: string): Promise<Event> => {
+export const getEventById = async (id: string): Promise<IEvent> => {
   const { data } = await instance.get(`/events/${id}`);
+
+  return data;
+};
+
+export const addParticipant = async (
+  credentials: IParticipantExceptId
+): Promise<IParticipant> => {
+  const { data } = await instance.post("/participants", credentials);
 
   return data;
 };

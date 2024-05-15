@@ -2,9 +2,9 @@ import { NavLink } from "react-router-dom";
 
 export const Header = () => {
   return (
-    <header className="container flex items-center min-h-[40px] p-4 border-b border-b-[#dec3c3] rounded-[10px]">
+    <header className="container flex items-center min-h-[40px] p-4  rounded-[18px] shadow-custom-inset">
       <nav>
-        <ul className="flex gap-[10px] text-[28px]">
+        <ul className="flex gap-[20px] text-[28px]">
           <li>
             <NavLink className="nav-link" to="/">
               Home

@@ -26,3 +26,10 @@
   font-stretch: normal;
   font-display: swap;
 }
+
+.fieldStyles {
+  @apply font-poppins-regular font-normal text-[20px] leading-[24px] w-full p-[14px] border border-[#fafafa] border-opacity-[0.2] rounded-[12px] bg-transparent;
+}
+.errorDesc {
+  @apply text-red-500 absolute px-[5px];
+}

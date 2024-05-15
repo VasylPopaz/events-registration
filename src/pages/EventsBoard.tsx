@@ -1,13 +1,19 @@
 import { useEffect, useState } from "react";
 
-import { getEvents } from "../api/api";
 import { EventsList } from "../components";
-import { Event } from "../types";
+
+import { getEvents } from "../api";
+import { IEvent } from "../types";
+import { toast } from "react-toastify";
 
 const EventsBoard = () => {
-  const [events, setEvents] = useState<Event[] | null>(null);
+  const [events, setEvents] = useState<IEvent[] | null>(null);
   useEffect(() => {
-    getEvents().then(setEvents);
+    getEvents()
+      .then((res) => setEvents(res.events))
+      .catch((e) => {
+        toast.error(e.response.data.message);
+      });
   }, []);
 
   if (!events) return;

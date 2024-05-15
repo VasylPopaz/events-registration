@@ -1,7 +1,7 @@
 import { EventsListItem } from "./EventsListItem";
-import { Event } from "../../types";
+import { IEvent } from "../../types";
 interface EventsListProps {
-  events: Event[];
+  events: IEvent[];
 }
 
 export const EventsList: React.FC<EventsListProps> = ({ events }) => {
