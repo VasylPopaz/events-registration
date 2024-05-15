@@ -24,7 +24,7 @@ const EventRegistration = () => {
   return (
     <section className="container py-[40px] ">
       <h2 className="font-semibold text-[38px] text-center mb-[10px]">
-        {event?.title}
+        "{event?.title}"
       </h2>
       <div>
         <RegisterForm />

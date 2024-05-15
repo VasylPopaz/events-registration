@@ -1,13 +1,14 @@
-import { useParams } from "react-router-dom";
-import { Field, Form, Formik } from "formik";
+import { useNavigate, useParams } from "react-router-dom";
+import { Field, Form, Formik, FormikHelpers } from "formik";
 import { format } from "date-fns";
+import { toast } from "react-toastify";
 
 import { IParticipantExceptId } from "../../types";
 import { addParticipant } from "../../api";
 import { ParticipantRegisterSchema } from "../../schemas";
-import { toast } from "react-toastify";
 
 export const RegisterForm = () => {
+  const navigate = useNavigate();
   const { eventId } = useParams<{ eventId: string }>();
 
   if (!eventId) return;
@@ -27,13 +28,20 @@ export const RegisterForm = () => {
           eventId,
         }}
         validationSchema={ParticipantRegisterSchema}
-        onSubmit={(values: IParticipantExceptId) => {
+        onSubmit={(
+          values: IParticipantExceptId,
+          { resetForm }: FormikHelpers<IParticipantExceptId>
+        ) => {
           addParticipant(values)
-            .then(() =>
+            .then(() => {
               toast.success(
                 "You have been successfully registered for the event."
-              )
-            )
+              );
+              resetForm();
+              setTimeout(() => {
+                navigate(`/participants/${eventId}`);
+              }, 2000);
+            })
             .catch((e) => {
               toast.error(e.response.data.message);
             });
