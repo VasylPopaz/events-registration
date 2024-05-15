@@ -3,12 +3,14 @@ import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 
 import { Filter, ParticipantsList } from "../components";
+
 import { IEvent, IParticipant } from "../types";
 import { getEventById, getParticipantsByEventId } from "../api";
 
 const EventParticipants = () => {
   const [participants, setParticipants] = useState<IParticipant[] | null>(null);
   const [event, setEvent] = useState<IEvent | null>(null);
+  const [filter, setFilter] = useState("");
   const { eventId } = useParams();
 
   useEffect(() => {
@@ -27,6 +29,22 @@ const EventParticipants = () => {
       });
   }, [eventId]);
 
+  const handleChangeFilter = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setFilter(event.target.value);
+  };
+
+  const getFilteredParticipants = () => {
+    const normalizedFilter = filter.toLowerCase();
+    if (!participants) return [];
+
+    return participants?.filter(
+      (item) =>
+        item.name.toLowerCase().includes(normalizedFilter) ||
+        item.email.toLowerCase().includes(normalizedFilter)
+    );
+  };
+  const filteredParticipants = getFilteredParticipants();
+
   if (!participants) return;
 
   return (
@@ -34,8 +52,13 @@ const EventParticipants = () => {
       <h2 className="font-semibold text-[38px] text-left mb-[10px]">
         "{event?.title}" Event {!participants.length && " has no "} participants
       </h2>
-      <Filter />
-      <ParticipantsList participants={participants} />
+      <Filter onChange={handleChangeFilter} />
+      {!filteredParticipants.length && (
+        <h2 className="font-semibold text-[38px] text-left">
+          No results for "{filter}".
+        </h2>
+      )}
+      <ParticipantsList participants={filteredParticipants} />
     </section>
   );
 };

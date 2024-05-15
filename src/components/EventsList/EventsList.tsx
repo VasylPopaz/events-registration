@@ -1,4 +1,5 @@
 import { EventsListItem } from "./EventsListItem";
+
 import { IEvent } from "../../types";
 
 interface EventsListProps {

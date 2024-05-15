@@ -1,5 +1,6 @@
-import { ParticipantsListProps } from "../../types";
 import { ParticipantsListItem } from "./ParticipantsListItem";
+
+import { ParticipantsListProps } from "../../types";
 
 export const ParticipantsList: React.FC<ParticipantsListProps> = ({
   participants,

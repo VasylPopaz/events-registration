@@ -1,26 +1,17 @@
-import { Field, Form, Formik } from "formik";
-
-export const Filter = () => {
+export const Filter = ({
+  onChange,
+}: {
+  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+}) => {
   return (
-    <Formik
-      initialValues={{
-        filter: "",
-      }}
-      onSubmit={(values) => {
-        console.log(values);
-      }}
-    >
-      {({ handleChange }) => (
-        <Form className="mb-[10px]">
-          <Field
-            className="fieldStyles"
-            name="filter"
-            placeholder="Find participants by name or email"
-            type="text"
-            onChange={handleChange}
-          />
-        </Form>
-      )}
-    </Formik>
+    <form className="mb-[10px]">
+      <input
+        className="fieldStyles"
+        name="filter"
+        placeholder="Find participants by name or email"
+        type="text"
+        onChange={onChange}
+      />
+    </form>
   );
 };
