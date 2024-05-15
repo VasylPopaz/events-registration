@@ -1,10 +1,12 @@
 import { Navigate, Route, Routes } from "react-router-dom";
+import { lazy } from "react";
 
 import { SharedLayout } from "../components";
-import Home from "../pages/Home";
-import EventRegistration from "../pages/EventRegistration";
-import EventParticipants from "../pages/EventParticipants";
-import EventsBoard from "../pages/EventsBoard";
+
+const Home = lazy(() => import("../pages/Home"));
+const EventRegistration = lazy(() => import("../pages/EventRegistration"));
+const EventParticipants = lazy(() => import("../pages/EventParticipants"));
+const EventsBoard = lazy(() => import("../pages/EventsBoard"));
 
 function App() {
   return (
