@@ -15,7 +15,7 @@ export const RegisterForm = () => {
 
   return (
     <>
-      <h2 className="font-semibold text-[32px] text-center">
+      <h2 className="font-semibold text-[26px] text-center mb-[15px]">
         Event Registration
       </h2>
       <Formik
@@ -48,19 +48,19 @@ export const RegisterForm = () => {
         }}
       >
         {({ errors, touched }) => (
-          <Form className=" w-[400px] mx-auto flex flex-col gap-[25px] justify-center shadow-custom-inset py-[40px] px-[20px] rounded-[10px]">
+          <Form className=" w-[450px] mx-auto flex flex-col gap-[30px] justify-center shadow-custom-inset p-[40px] rounded-[18px]">
             <div className="relative">
               <Field
                 className="fieldStyles"
                 type="text"
                 name="name"
-                placeholder="Enter fullname"
+                placeholder="Enter full name"
               />
               {errors.name && touched.name ? (
                 <p className="errorDesc">{errors.name}</p>
               ) : null}
             </div>
-            <div>
+            <div className="relative">
               <Field
                 className="fieldStyles"
                 type="email"
@@ -109,7 +109,6 @@ export const RegisterForm = () => {
                   Friends
                 </label>
                 <label>
-                  {" "}
                   <Field
                     className="real-radio"
                     type="radio"
@@ -122,7 +121,7 @@ export const RegisterForm = () => {
               </div>
             </div>
             <button
-              className="w-full p-[10px] border border-slate-700 rounded-[10px] bg-transparent hover:bg-[#3c3d46] hover:text-[#e3f6ff] hover:border-transparent transition-colors"
+              className="w-full px-[10px] py-[12px] border border-slate-700 rounded-[10px] bg-[#3c3d46] text-[#cdcdce] hover:scale-[1.05] hover:text-[#fbfbfc] hover:border-transparent transition duration-300"
               type="submit"
             >
               Register

@@ -5,3 +5,4 @@ export * from "./EventsList/EventsListItem.tsx";
 export * from "./RegisterForm/RegisterForm.tsx";
 export * from "./ParticipantsList/ParticipantsList.tsx";
 export * from "./ParticipantsList/ParticipantsListItem.tsx";
+export * from "./Filter/Filter.tsx";

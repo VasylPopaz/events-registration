@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
+import { toast } from "react-toastify";
 
 import { EventsList } from "../components";
 
 import { getEvents } from "../api";
 import { IEvent } from "../types";
-import { toast } from "react-toastify";
 
 const EventsBoard = () => {
   const [events, setEvents] = useState<IEvent[]>([]);
@@ -14,7 +14,6 @@ const EventsBoard = () => {
 
   useEffect(() => {
     const scrollHandler = () => {
-      console.log();
       if (
         document.documentElement.scrollHeight -
           (window.scrollY + window.innerHeight) <
@@ -39,13 +38,19 @@ const EventsBoard = () => {
           setEvents([...events, ...res.events]);
           setTotalEvents(res.totalEvents);
           setPage((prev) => prev + 1);
+          const isMoreEvents = page < Math.ceil(res.totalEvents / 9);
+          if (!isMoreEvents) {
+            toast.info(
+              `We’re sorry, but you’ve reached the end of the event list.`
+            );
+          }
         })
         .catch((e) => {
           toast.error(e.response.data.message);
         })
         .finally(() => setIsFetching(false));
     }
-  }, [events, isFetching, page]);
+  }, [events, isFetching, page, totalEvents]);
 
   return (
     <section className="container py-[40px]">

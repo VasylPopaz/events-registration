@@ -28,8 +28,9 @@
 }
 
 .fieldStyles {
-  @apply font-poppins-regular font-normal text-[20px] leading-[24px] w-full p-[14px] border border-[#fafafa] border-opacity-[0.2] rounded-[12px] bg-transparent;
+  @apply font-poppins-regular font-normal text-[18px] leading-[24px] w-full p-[14px] border border-[#fafafa] rounded-[12px] bg-transparent outline-none opacity-[0.4] hover:opacity-[1] focus:opacity-[1] transition duration-300;
 }
+
 .errorDesc {
-  @apply text-red-500 absolute px-[5px];
+  @apply text-red-700 bg-[#24252A] absolute ml-[12px] px-[4px] bottom-[-14px] rounded-[18px];
 }

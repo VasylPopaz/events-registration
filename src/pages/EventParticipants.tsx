@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 
-import { ParticipantsList } from "../components";
+import { Filter, ParticipantsList } from "../components";
 import { IEvent, IParticipant } from "../types";
 import { getEventById, getParticipantsByEventId } from "../api";
 
@@ -32,8 +32,9 @@ const EventParticipants = () => {
   return (
     <section className="container py-[40px]">
       <h2 className="font-semibold text-[38px] text-left mb-[10px]">
-        "{event?.title}" Event
+        "{event?.title}" Event {!participants.length && " has no "} participants
       </h2>
+      <Filter participants={participants} />
       <ParticipantsList participants={participants} />
     </section>
   );

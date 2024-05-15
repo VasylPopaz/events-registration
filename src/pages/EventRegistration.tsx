@@ -23,7 +23,7 @@ const EventRegistration = () => {
 
   return (
     <section className="container py-[40px] ">
-      <h2 className="font-semibold text-[38px] text-center mb-[10px]">
+      <h2 className="font-semibold text-[38px] text-center mb-[30px]">
         "{event?.title}"
       </h2>
       <div>
