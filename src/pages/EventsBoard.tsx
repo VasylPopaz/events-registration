@@ -6,9 +6,11 @@ import { EventsList, ScrollUpBtn, Sort } from "../components";
 import { getEvents } from "../api";
 import { IEvent } from "../types";
 import { getSortedEvents } from "../helpers";
+import { Loader } from "../components/Loader/Loader";
 
 const EventsBoard = () => {
   const [events, setEvents] = useState<IEvent[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
   const [sortBy, setSortBy] = useState("");
   const [page, setPage] = useState(1);
   const [isFetching, setIsFetching] = useState(true);
@@ -38,6 +40,7 @@ const EventsBoard = () => {
 
   useEffect(() => {
     if (isFetching) {
+      setIsLoading(true);
       getEvents(page, "")
         .then((res) => {
           setEvents([...events, ...res.events]);
@@ -55,7 +58,10 @@ const EventsBoard = () => {
         .catch((e) => {
           toast.error(e.response.data.message);
         })
-        .finally(() => setIsFetching(false));
+        .finally(() => {
+          setIsLoading(false);
+          setIsFetching(false);
+        });
     }
   }, [events, isFetching, page, sortBy, totalEvents]);
 
@@ -67,6 +73,7 @@ const EventsBoard = () => {
 
   return (
     <section className="container py-[40px]">
+      {isLoading && <Loader />}
       <Sort onChange={handleChangeSort} />
       <EventsList events={sortedEvents} />
       <ScrollUpBtn />

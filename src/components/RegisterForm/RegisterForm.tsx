@@ -6,8 +6,12 @@ import { toast } from "react-toastify";
 import { IParticipantExceptId } from "../../types";
 import { addParticipant } from "../../api";
 import { ParticipantRegisterSchema } from "../../schemas";
+import { Loader } from "../Loader/Loader";
+import { useState } from "react";
 
 export const RegisterForm = () => {
+  const [isLoading, setIsLoading] = useState(false);
+
   const navigate = useNavigate();
   const { eventId } = useParams<{ eventId: string }>();
 
@@ -32,6 +36,7 @@ export const RegisterForm = () => {
           values: IParticipantExceptId,
           { resetForm }: FormikHelpers<IParticipantExceptId>
         ) => {
+          setIsLoading(true);
           addParticipant(values)
             .then(() => {
               toast.success(
@@ -44,6 +49,9 @@ export const RegisterForm = () => {
             })
             .catch((e) => {
               toast.error(e.response.data.message);
+            })
+            .finally(() => {
+              setIsLoading(false);
             });
         }}
       >
@@ -121,10 +129,12 @@ export const RegisterForm = () => {
               </div>
             </div>
             <button
-              className="w-full px-[10px] py-[12px] border border-slate-700 rounded-[10px] bg-[#3c3d46] text-[#cdcdce] hover:scale-[1.05] hover:text-[#fbfbfc] hover:border-transparent transition duration-300"
+              className="w-full px-[10px] py-[12px] border border-slate-700 rounded-[10px] bg-[#3c3d46] text-[#cdcdce] hover:scale-[1.05] hover:text-[#fbfbfc] hover:border-transparent transition duration-300 disabled:cursor-not-allowed disabled:bg-[#f0f8ff] disabled:opacity-[0.7]"
               type="submit"
+              disabled={isLoading}
             >
               Register
+              {isLoading && <Loader size="20" classTitle="insideButton" />}
             </button>
           </Form>
         )}

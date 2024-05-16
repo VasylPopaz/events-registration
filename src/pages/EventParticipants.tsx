@@ -6,6 +6,7 @@ import { Filter, ParticipantsList, ScrollUpBtn } from "../components";
 
 import { IEvent, IParticipant } from "../types";
 import { getEventById, getParticipantsByEventId } from "../api";
+import { Loader } from "../components/Loader/Loader";
 
 const EventParticipants = () => {
   const [participants, setParticipants] = useState<IParticipant[] | null>(null);
@@ -15,6 +16,7 @@ const EventParticipants = () => {
 
   useEffect(() => {
     if (!eventId) return;
+
     getEventById(eventId)
       .then((data) => {
         setEvent(data);
@@ -45,7 +47,7 @@ const EventParticipants = () => {
   };
   const filteredParticipants = getFilteredParticipants();
 
-  if (!participants) return;
+  if (!participants) return <Loader />;
 
   return (
     <section className="container py-[40px]">

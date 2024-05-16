@@ -4,7 +4,7 @@ export const Filter = ({
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }) => {
   return (
-    <div className="mb-[10px]">
+    <div className="mb-[40px]">
       <input
         className="fieldStyles"
         name="filter"

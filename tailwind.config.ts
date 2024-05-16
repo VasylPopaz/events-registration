@@ -98,7 +98,7 @@ export default {
           height: "16px",
           width: "16px",
           backgroundColor: "white",
-          border: "2px solid #b6adef",
+          border: "2px solid #133f85",
           borderRadius: "50%",
           verticalAlign: "text-top",
           marginRight: "5px",
