@@ -48,7 +48,7 @@ export const RegisterForm = () => {
         }}
       >
         {({ errors, touched }) => (
-          <Form className=" w-[450px] mx-auto flex flex-col gap-[30px] justify-center shadow-custom-inset p-[40px] rounded-[18px]">
+          <Form className=" w-[350px] md:w-[450px] mx-auto flex flex-col gap-[30px] justify-center shadow-custom-inset p-[40px] rounded-[18px]">
             <div className="relative">
               <Field
                 className="fieldStyles"
@@ -84,7 +84,7 @@ export const RegisterForm = () => {
               ) : null}
             </div>
             <div>
-              <p className="text-[18px] mb-[6px]">
+              <p className="text-[16px] md:text-[18px] mb-[6px]">
                 Where did you hear about this event?
               </p>
               <div className="flex gap-[8px]">

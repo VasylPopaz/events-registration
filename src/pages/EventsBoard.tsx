@@ -1,25 +1,31 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { toast } from "react-toastify";
 
-import { EventsList } from "../components";
+import { EventsList, ScrollUpBtn, Sort } from "../components";
 
 import { getEvents } from "../api";
 import { IEvent } from "../types";
-import { Sort } from "../components/Sort/Sort";
+import { getSortedEvents } from "../helpers";
 
 const EventsBoard = () => {
   const [events, setEvents] = useState<IEvent[]>([]);
-  // const [sortBy, setSortBy] = useState("");
+  const [sortBy, setSortBy] = useState("");
   const [page, setPage] = useState(1);
   const [isFetching, setIsFetching] = useState(true);
   const [totalEvents, setTotalEvents] = useState(0);
+  const [isVisible, setIsVisible] = useState(false);
+
+  const scrollYRef = useRef(0);
+
+  const SCROLL_THRESHOLD = 100;
+  const EVENTS_PER_PAGE = 9;
 
   useEffect(() => {
     const scrollHandler = () => {
       if (
         document.documentElement.scrollHeight -
           (window.scrollY + window.innerHeight) <
-          100 &&
+          SCROLL_THRESHOLD &&
         events.length < totalEvents
       ) {
         setIsFetching(true);
@@ -34,13 +40,28 @@ const EventsBoard = () => {
   }, [events.length, totalEvents]);
 
   useEffect(() => {
+    const handleScroll = () => {
+      scrollYRef.current = window.scrollY;
+      setIsVisible(scrollYRef.current > 300);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  useEffect(() => {
     if (isFetching) {
       getEvents(page, "")
         .then((res) => {
           setEvents([...events, ...res.events]);
           setTotalEvents(res.totalEvents);
           setPage((prev) => prev + 1);
-          const isMoreEvents = page < Math.ceil(res.totalEvents / 9);
+
+          const isMoreEvents =
+            page < Math.ceil(res.totalEvents / EVENTS_PER_PAGE);
           if (!isMoreEvents) {
             toast.info(
               `We’re sorry, but you’ve reached the end of the event list.`
@@ -52,20 +73,19 @@ const EventsBoard = () => {
         })
         .finally(() => setIsFetching(false));
     }
-  }, [events, isFetching, page, totalEvents]);
+  }, [events, isFetching, page, sortBy, totalEvents]);
 
   const handleChangeSort = (option: string) => {
-    console.log(option);
-    // setSortBy(option);
-    // getEvents(page, option).then((res) =>
-    //   setEvents([...events, ...res.events])
-    // );
+    setSortBy(option);
   };
+
+  const sortedEvents = getSortedEvents(events, sortBy);
 
   return (
     <section className="container py-[40px]">
       <Sort onChange={handleChangeSort} />
-      <EventsList events={events} />
+      <EventsList events={sortedEvents} />
+      <ScrollUpBtn isVisible={isVisible} />
     </section>
   );
 };

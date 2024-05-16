@@ -52,12 +52,12 @@ const EventParticipants = () => {
       <h2 className="font-semibold text-[38px] text-left mb-[10px]">
         "{event?.title}" Event {!participants.length && " has no "} participants
       </h2>
-      <Filter onChange={handleChangeFilter} />
-      {!filteredParticipants.length && (
+      {participants.length ? <Filter onChange={handleChangeFilter} /> : null}
+      {!filteredParticipants.length && participants.length ? (
         <h2 className="font-semibold text-[38px] text-left">
           No results for "{filter}".
         </h2>
-      )}
+      ) : null}
       <ParticipantsList participants={filteredParticipants} />
     </section>
   );

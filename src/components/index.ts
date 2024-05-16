@@ -6,3 +6,5 @@ export * from "./RegisterForm/RegisterForm.tsx";
 export * from "./ParticipantsList/ParticipantsList.tsx";
 export * from "./ParticipantsList/ParticipantsListItem.tsx";
 export * from "./Filter/Filter.tsx";
+export * from "./Sort/Sort.tsx";
+export * from "./ScrollUpBtn/ScrollUpBtn.tsx";

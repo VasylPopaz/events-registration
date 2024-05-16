@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { MdKeyboardArrowDown, MdKeyboardArrowUp } from "react-icons/md";
+
 import { getSortValue } from "../../helpers";
 
 export const Sort = ({ onChange }: { onChange: (option: string) => void }) => {
@@ -78,13 +79,13 @@ export const Sort = ({ onChange }: { onChange: (option: string) => void }) => {
           </li>
           <li
             className="py-[4px] px-[8px] rounded-[10px] cursor-pointer hover:text-[#0e223b] hover:bg-[#bdbdbd] transition duration-300"
-            onClick={() => handleOptionClick("byDate=true")}
+            onClick={() => handleOptionClick("byDate=false")}
           >
             Event date new{" "}
           </li>
           <li
             className="py-[4px] px-[8px] rounded-[10px] cursor-pointer hover:text-[#0e223b] hover:bg-[#bdbdbd] transition duration-300"
-            onClick={() => handleOptionClick("byDate=false")}
+            onClick={() => handleOptionClick("byDate=true")}
           >
             Event date old
           </li>
