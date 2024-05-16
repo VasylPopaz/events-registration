@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 
-import { Filter, ParticipantsList } from "../components";
+import { Filter, ParticipantsList, ScrollUpBtn } from "../components";
 
 import { IEvent, IParticipant } from "../types";
 import { getEventById, getParticipantsByEventId } from "../api";
@@ -59,6 +59,7 @@ const EventParticipants = () => {
         </h2>
       ) : null}
       <ParticipantsList participants={filteredParticipants} />
+      <ScrollUpBtn />
     </section>
   );
 };

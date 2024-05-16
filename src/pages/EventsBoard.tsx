@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
 import { EventsList, ScrollUpBtn, Sort } from "../components";
@@ -13,9 +13,6 @@ const EventsBoard = () => {
   const [page, setPage] = useState(1);
   const [isFetching, setIsFetching] = useState(true);
   const [totalEvents, setTotalEvents] = useState(0);
-  const [isVisible, setIsVisible] = useState(false);
-
-  const scrollYRef = useRef(0);
 
   const SCROLL_THRESHOLD = 100;
   const EVENTS_PER_PAGE = 9;
@@ -38,19 +35,6 @@ const EventsBoard = () => {
       document.removeEventListener("scroll", scrollHandler);
     };
   }, [events.length, totalEvents]);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      scrollYRef.current = window.scrollY;
-      setIsVisible(scrollYRef.current > 300);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
 
   useEffect(() => {
     if (isFetching) {
@@ -85,7 +69,7 @@ const EventsBoard = () => {
     <section className="container py-[40px]">
       <Sort onChange={handleChangeSort} />
       <EventsList events={sortedEvents} />
-      <ScrollUpBtn isVisible={isVisible} />
+      <ScrollUpBtn />
     </section>
   );
 };
