@@ -11,8 +11,13 @@ const instance = axios.create({
   baseURL: "https://events-registration-app-backend-w9jw.onrender.com/api",
 });
 
-export const getEvents = async (page: number): Promise<IEventResponse> => {
-  const { data } = await instance.get("/events", { params: { page } });
+export const getEvents = async (
+  page: number,
+  query: string
+): Promise<IEventResponse> => {
+  const { data } = await instance.get(`/events${query ? `?${query}` : ""}`, {
+    params: { page },
+  });
 
   return data;
 };

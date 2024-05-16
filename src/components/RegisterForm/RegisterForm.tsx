@@ -88,7 +88,7 @@ export const RegisterForm = () => {
                 Where did you hear about this event?
               </p>
               <div className="flex gap-[8px]">
-                <label>
+                <label className="labelStyles">
                   <Field
                     className="real-radio"
                     type="radio"
@@ -98,7 +98,7 @@ export const RegisterForm = () => {
                   <span className="custom-radio"></span>
                   Social media
                 </label>
-                <label>
+                <label className="labelStyles">
                   <Field
                     className="real-radio"
                     type="radio"
@@ -108,7 +108,7 @@ export const RegisterForm = () => {
                   <span className="custom-radio"></span>
                   Friends
                 </label>
-                <label>
+                <label className="labelStyles">
                   <Field
                     className="real-radio"
                     type="radio"
