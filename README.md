@@ -1,30 +1,30 @@
-# React + TypeScript + Vite
+# EventGo Application
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+EventGo is a web application built using React and Vite that allows users to register for events, view event details, and browse event participants. Users can also search for participants by name and email, as well as sort events by title, date, and organizer. The application implements infinite scrolling to load events dynamically.
+![event-registration](/public/2.png)
+![event-registration](/public/1.png)
 
-Currently, two official plugins are available:
+# Key Features:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+1. Event Registration: Users can easily register for events by providing their details.
+2. Event Details: Detailed information about each event is available, including the event title, date, description, and organizer.
+3. Participant Search: Users can search for event participants by name or email.
+4. Sorting: Events can be sorted by title, date, and organizer in ascending or descending order.
+5. Infinite Scroll: The application dynamically loads events as the user scrolls, providing a seamless browsing experience.
 
-## Expanding the ESLint configuration
+# Technologies Used:
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- React: Frontend development framework for building user interfaces.
+- Vite: Build tool that provides fast development server and optimized production builds.
+- JavaScript/TypeScript: Programming languages used for frontend development.
+- Tailwind CSS: CSS framework for designing the application's user interface.
+- MongoDB/Express.js/Node.js (MERN) Stack: Backend technologies for managing data and handling server-side operations (optional, depending on the backend implementation).
 
-- Configure the top-level `parserOptions` property like this:
+# Future Enhancements:
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+- User Authentication: Implement user authentication to allow registered users to access personalized features.
+- Event Creation: Enable event organizers to create and manage their events.
+- Participant Management: Allow event organizers to view and manage event participants.
+- Event Notifications: Implement notifications for event updates, registrations, and reminders.
+- Improved UI/UX: Enhance the user interface and experience to make the application more intuitive and visually appealing.
+- EventGo provides a convenient platform for users to discover and participate in a variety of events while offering organizers the tools they need to manage and promote their events effectively.
