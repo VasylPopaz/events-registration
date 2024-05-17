@@ -1,4 +1,5 @@
 import { format } from "date-fns";
+
 import { IParticipant } from "../types";
 
 interface IRegistrationData {
@@ -29,8 +30,11 @@ export const getParticipantsPerDay = (
 
   const filteredData = participants.filter((participant) => {
     const registrationDate = new Date(participant.dateOfRegistration);
-    // Ensure to compare only date part without time
-    return registrationDate >= fiveDaysAgo && registrationDate <= currentDate;
+
+    return (
+      registrationDate >= new Date(fiveDaysAgo.toISOString().split("T")[0]) &&
+      registrationDate <= new Date(currentDate.toISOString().split("T")[0])
+    );
   });
 
   filteredData.forEach((participant) => {

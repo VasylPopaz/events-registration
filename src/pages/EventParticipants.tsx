@@ -61,9 +61,6 @@ const EventParticipants = () => {
       </h2>
       {participants.length ? (
         <>
-          <p className="text-[24px] md:text-[24px] mb-[10px]">
-            Amount of registrations per day:
-          </p>
           <Chart participants={participants} />
           <Filter onChange={handleChangeFilter} />
         </>

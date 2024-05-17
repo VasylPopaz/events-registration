@@ -41,14 +41,17 @@ export const Chart: React.FC<IParticipantsListProps> = ({ participants }) => {
 
   const data = getParticipantsPerDay(participants);
   return (
-    <div className="w-full h-[300px] p-[8px] bg-[#2d2d31] rounded-[18px] mb-[20px]">
+    <div className="relative w-full h-[300px] p-[8px] bg-[#2d2d31] rounded-[18px] mb-[20px]">
+      <p className="text-[18px] absolute top-[10px] left-[10px]">
+        Amount of registrations per day:
+      </p>
       <ResponsiveContainer>
         <BarChart
           width={1158}
           height={300}
           data={data}
           margin={{
-            top: 20,
+            top: 50,
             bottom: 5,
           }}
         >
