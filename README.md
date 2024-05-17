@@ -2,9 +2,9 @@
 
 EventGo is a web application built using React and Vite that allows users to register for events, view event details, and browse event participants. Users can also search for participants by name and email, as well as sort events by title, date, and organizer. The application implements infinite scrolling to load events dynamically.
 
-![event-registration](/public/2.png)
-
 ![event-registration](/public/1.png)
+
+![event-registration](/public/2.png)
 
 # Key Features:
 
