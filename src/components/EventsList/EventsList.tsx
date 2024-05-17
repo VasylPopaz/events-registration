@@ -2,11 +2,11 @@ import { EventsListItem } from "./EventsListItem";
 
 import { IEvent } from "../../types";
 
-interface EventsListProps {
+interface IEventsListProps {
   events: IEvent[];
 }
 
-export const EventsList: React.FC<EventsListProps> = ({ events }) => {
+export const EventsList: React.FC<IEventsListProps> = ({ events }) => {
   return (
     <ul className="flex flex-wrap gap-[20px]">
       {events.map((event) => (

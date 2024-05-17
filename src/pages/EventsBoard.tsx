@@ -1,12 +1,11 @@
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
-import { EventsList, ScrollUpBtn, Sort } from "../components";
+import { EventsList, ScrollUpBtn, Sort, Loader } from "../components";
 
 import { getEvents } from "../api";
 import { IEvent } from "../types";
 import { getSortedEvents } from "../helpers";
-import { Loader } from "../components/Loader/Loader";
 
 const EventsBoard = () => {
   const [events, setEvents] = useState<IEvent[]>([]);
@@ -51,7 +50,7 @@ const EventsBoard = () => {
             page < Math.ceil(res.totalEvents / EVENTS_PER_PAGE);
           if (!isMoreEvents) {
             toast.info(
-              `We’re sorry, but you’ve reached the end of the event list.`
+              `We are sorry, but you have reached the end of the event list.`
             );
           }
         })
@@ -74,9 +73,13 @@ const EventsBoard = () => {
   return (
     <section className="container py-[40px]">
       {isLoading && <Loader />}
-      <Sort onChange={handleChangeSort} />
-      <EventsList events={sortedEvents} />
-      <ScrollUpBtn />
+      {events ? (
+        <>
+          <Sort onChange={handleChangeSort} />
+          <EventsList events={sortedEvents} />
+          <ScrollUpBtn />
+        </>
+      ) : null}
     </section>
   );
 };

@@ -1,15 +1,16 @@
 export const getSortValue = (value: string) => {
   switch (value) {
     case "":
-      return "Sort by";
+      return "None";
     case "byTitle=true":
       return "Title A-Z";
     case "byTitle=false":
       return "Title Z-A";
     case "byDate=true":
-      return "Event date new";
+      return "Oldest events";
     case "byDate=false":
-      return "Event date old";
+      return "Newest events";
+
     case "byOrganizer=true":
       return "Organizer A-Z";
     case "byOrganizer=false":

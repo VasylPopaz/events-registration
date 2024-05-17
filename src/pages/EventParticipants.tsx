@@ -2,11 +2,16 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 
-import { Filter, ParticipantsList, ScrollUpBtn } from "../components";
+import {
+  Filter,
+  ParticipantsList,
+  ScrollUpBtn,
+  Loader,
+  Chart,
+} from "../components";
 
 import { IEvent, IParticipant } from "../types";
 import { getEventById, getParticipantsByEventId } from "../api";
-import { Loader } from "../components/Loader/Loader";
 
 const EventParticipants = () => {
   const [participants, setParticipants] = useState<IParticipant[] | null>(null);
@@ -54,7 +59,15 @@ const EventParticipants = () => {
       <h2 className="font-semibold text-[38px] text-left mb-[10px]">
         "{event?.title}" Event {!participants.length && " has no "} participants
       </h2>
-      {participants.length ? <Filter onChange={handleChangeFilter} /> : null}
+      {participants.length ? (
+        <>
+          <p className="text-[24px] md:text-[24px] mb-[10px]">
+            Amount of registrations per day:
+          </p>
+          <Chart participants={participants} />
+          <Filter onChange={handleChangeFilter} />
+        </>
+      ) : null}
       {!filteredParticipants.length && participants.length ? (
         <h2 className="font-semibold text-[38px] text-left">
           No results for "{filter}".

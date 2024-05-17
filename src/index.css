@@ -27,12 +27,12 @@
   font-display: swap;
 }
 .labelStyles {
-  @apply flex items-center;
+  @apply flex items-center text-[12px] md:text-[16px];
 }
 .fieldStyles {
   @apply font-poppins-regular font-normal text-[18px] leading-[24px] w-full p-[14px] border border-[#fafafa] rounded-[12px] bg-transparent outline-none opacity-[0.4] hover:opacity-[1] focus:opacity-[1] transition duration-300;
 }
 
 .errorDesc {
-  @apply text-red-700 bg-[#24252A] absolute ml-[12px] px-[4px] bottom-[-14px] rounded-[18px];
+  @apply text-red-700 bg-[#111111] absolute ml-[12px] px-[4px] bottom-[-14px] rounded-[18px];
 }

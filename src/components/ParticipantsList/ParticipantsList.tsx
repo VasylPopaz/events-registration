@@ -1,8 +1,8 @@
 import { ParticipantsListItem } from "./ParticipantsListItem";
 
-import { ParticipantsListProps } from "../../types";
+import { IParticipantsListProps } from "../../types";
 
-export const ParticipantsList: React.FC<ParticipantsListProps> = ({
+export const ParticipantsList: React.FC<IParticipantsListProps> = ({
   participants,
 }) => {
   return (

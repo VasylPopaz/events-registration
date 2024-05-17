@@ -1,13 +1,14 @@
 import { useNavigate, useParams } from "react-router-dom";
+import { useState } from "react";
 import { Field, Form, Formik, FormikHelpers } from "formik";
 import { format } from "date-fns";
 import { toast } from "react-toastify";
 
+import { Loader } from "../../components";
+
 import { IParticipantExceptId } from "../../types";
 import { addParticipant } from "../../api";
 import { ParticipantRegisterSchema } from "../../schemas";
-import { Loader } from "../Loader/Loader";
-import { useState } from "react";
 
 export const RegisterForm = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -45,7 +46,7 @@ export const RegisterForm = () => {
               resetForm();
               setTimeout(() => {
                 navigate(`/participants/${eventId}`);
-              }, 2000);
+              }, 1500);
             })
             .catch((e) => {
               toast.error(e.response.data.message);
@@ -56,7 +57,7 @@ export const RegisterForm = () => {
         }}
       >
         {({ errors, touched }) => (
-          <Form className=" w-[350px] md:w-[450px] mx-auto flex flex-col gap-[30px] justify-center shadow-custom-inset p-[40px] rounded-[18px]">
+          <Form className=" w-[350px] md:w-[450px] mx-auto flex flex-col gap-[30px] justify-center shadow-custom-inset p-[40px] rounded-[18px] border border-gray-600">
             <div className="relative">
               <Field
                 className="fieldStyles"
@@ -129,7 +130,7 @@ export const RegisterForm = () => {
               </div>
             </div>
             <button
-              className="w-full px-[10px] py-[12px] border border-slate-700 rounded-[10px] bg-[#3c3d46] text-[#cdcdce] hover:scale-[1.05] hover:text-[#fbfbfc] hover:border-transparent transition duration-300 disabled:cursor-not-allowed disabled:bg-[#f0f8ff] disabled:opacity-[0.7]"
+              className="w-full px-[10px] py-[12px] border border-slate-700 rounded-[10px] bg-[#3c3d46] text-[#cdcdce] hover:scale-[1.05] hover:text-[#fbfbfc] hover:bg-[#1d232a] hover:border-transparent transition duration-300 disabled:cursor-not-allowed disabled:bg-[#f0f8ff] disabled:opacity-[0.7]"
               type="submit"
               disabled={isLoading}
             >

@@ -2,11 +2,10 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
-import { RegisterForm } from "../components";
+import { RegisterForm, Loader } from "../components";
 
 import { getEventById } from "../api";
 import { IEvent } from "../types";
-import { Loader } from "../components/Loader/Loader";
 
 const EventRegistration = () => {
   const [event, setEvent] = useState<IEvent | null>(null);

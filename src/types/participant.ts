@@ -18,7 +18,7 @@ export interface IParticipantExceptId {
   eventAdvertisementSource: Source;
   eventId: string;
 }
-export interface ParticipantsListProps {
+export interface IParticipantsListProps {
   participants: IParticipant[];
 }
 // export interface IParticipantExceptId extends Omit<IParticipant, "_id"> {}

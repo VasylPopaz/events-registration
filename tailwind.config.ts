@@ -13,8 +13,8 @@ export default {
     },
     extend: {
       colors: {
-        "text-color": "#edf0f1",
-        "bg-card-color": "#0e223b",
+        "text-color": "#dcddde",
+        "bg-card-color": "#1d232a",
       },
       boxShadow: {
         "custom-inset":
@@ -26,14 +26,14 @@ export default {
     container: false,
   },
   plugins: [
-    ({ addComponents }) => {
+    ({ addComponents, theme }) => {
       const paddingX = "16px";
       const paddingXLg = "15px";
       addComponents({
         body: {
           paddingTop: "10px",
-          backgroundColor: "#24252A",
-          color: "#edf0f1",
+          backgroundColor: "#111111",
+          color: theme("colors.text-color"),
         },
         label: {
           cursor: "pointer",
@@ -68,7 +68,7 @@ export default {
             backgroundColor: "#3b3941",
           },
           "&.active": {
-            backgroundColor: "#4e4e69",
+            backgroundColor: "black",
           },
         },
 
@@ -159,7 +159,7 @@ export default {
             borderRadius: "50%",
             width: "100%",
             height: "100%",
-            backgroundColor: "#4e4e69",
+            backgroundColor: "#1d232a",
             transition: "transform 700ms",
             transformOrigin: "top",
             transform: "scaleY(0)",

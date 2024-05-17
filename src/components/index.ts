@@ -8,3 +8,5 @@ export * from "./ParticipantsList/ParticipantsListItem.tsx";
 export * from "./Filter/Filter.tsx";
 export * from "./Sort/Sort.tsx";
 export * from "./ScrollUpBtn/ScrollUpBtn.tsx";
+export * from "./Loader/Loader.tsx";
+export * from "./Chart/Chart.tsx";

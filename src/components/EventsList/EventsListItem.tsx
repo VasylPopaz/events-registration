@@ -3,21 +3,21 @@ import { Link } from "react-router-dom";
 
 import { IEvent } from "../../types";
 
-interface EventListItemProps {
+interface IEventListItemProps {
   event: IEvent;
 }
 
-export const EventsListItem: React.FC<EventListItemProps> = ({
+export const EventsListItem: React.FC<IEventListItemProps> = ({
   event: { title, description, date, organizer, _id },
 }) => {
   return (
-    <li className="flex flex-col justify-between text-[#b5b6b6] p-[18px] bg-[#0e223b] rounded-[18px] w-[100%] md:w-[342px] lg:w-[362px] lg:p-[24px] shadow-custom-inset">
+    <li className="flex flex-col justify-between text-text-color p-[18px] bg-bg-card-color rounded-[18px] w-[100%] md:w-[342px] lg:w-[362px] lg:p-[24px] shadow-custom-inset">
       <div className="pb-[10px] mb-auto">
         <h2 className="font-semibold text-[20px]">{title}</h2>
         <p className="line-clamp-6 ">{description}</p>
       </div>
       <div className=" ">
-        <div className="flex justify-between border-b border-b-[#b5b6b6] mb-[8px]">
+        <div className="flex justify-between border-b border-b-texttext-text-color mb-[8px]">
           <p>{format(date, "PP")}</p>
           <p className="text-right">{organizer}</p>
         </div>
