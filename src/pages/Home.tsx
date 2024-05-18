@@ -6,7 +6,7 @@ const Home = () => {
           Welcome to EventGo!
         </h1>
         <p className="text-[24px] text-center w-[300px]  md:w-[700px]">
-          Join us today and elevate your event experience.
+          Join us today and elevate your event experience
         </p>
       </div>
     </section>
