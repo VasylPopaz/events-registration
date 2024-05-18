@@ -36,3 +36,11 @@
 .errorDesc {
   @apply text-red-700 bg-[#111111] absolute ml-[12px] px-[4px] bottom-[-14px] rounded-[18px];
 }
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(0.5) sepia(1) saturate(5) hue-rotate(200deg);
+}
+
+input[type="date"]::-moz-calendar-picker-indicator {
+  filter: invert(0.5) sepia(1) saturate(5) hue-rotate(200deg);
+}

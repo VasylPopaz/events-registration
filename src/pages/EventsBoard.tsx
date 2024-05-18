@@ -73,7 +73,7 @@ const EventsBoard = () => {
   return (
     <section className="container py-[40px]">
       {isLoading && <Loader />}
-      {events ? (
+      {events.length ? (
         <>
           <Sort onChange={handleChangeSort} />
           <EventsList events={sortedEvents} />

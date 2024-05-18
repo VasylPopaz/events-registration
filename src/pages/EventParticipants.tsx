@@ -12,6 +12,7 @@ import {
 
 import { IEvent, IParticipant } from "../types";
 import { getEventById, getParticipantsByEventId } from "../api";
+import { getFilteredParticipants } from "../helpers";
 
 const EventParticipants = () => {
   const [participants, setParticipants] = useState<IParticipant[] | null>(null);
@@ -40,19 +41,15 @@ const EventParticipants = () => {
     setFilter(event.target.value);
   };
 
-  const getFilteredParticipants = () => {
-    const normalizedFilter = filter.toLowerCase();
-    if (!participants) return [];
-
-    return participants?.filter(
-      (item) =>
-        item.name.toLowerCase().includes(normalizedFilter) ||
-        item.email.toLowerCase().includes(normalizedFilter)
-    );
-  };
-  const filteredParticipants = getFilteredParticipants();
-
   if (!participants) return <Loader />;
+
+  const filteredParticipants = getFilteredParticipants(participants, filter);
+
+  const sortedParticipants = [...filteredParticipants].sort(
+    (b, a) =>
+      new Date(a.dateOfRegistration).getTime() -
+      new Date(b.dateOfRegistration).getTime()
+  );
 
   return (
     <section className="container py-[40px]">
@@ -70,7 +67,7 @@ const EventParticipants = () => {
           No results for "{filter}".
         </h2>
       ) : null}
-      <ParticipantsList participants={filteredParticipants} />
+      <ParticipantsList participants={sortedParticipants} />
       <ScrollUpBtn />
     </section>
   );

@@ -21,4 +21,3 @@ export interface IParticipantExceptId {
 export interface IParticipantsListProps {
   participants: IParticipant[];
 }
-// export interface IParticipantExceptId extends Omit<IParticipant, "_id"> {}
