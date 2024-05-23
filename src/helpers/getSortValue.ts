@@ -7,9 +7,9 @@ export const getSortValue = (value: string) => {
     case "byTitle=false":
       return "Title Z-A";
     case "byDate=true":
-      return "Oldest events";
+      return "Oldest";
     case "byDate=false":
-      return "Newest events";
+      return "Newest";
 
     case "byOrganizer=true":
       return "Organizer A-Z";

@@ -68,13 +68,13 @@ export const Sort = ({ onChange }: { onChange: (option: string) => void }) => {
               className="py-[4px] px-[8px] rounded-[10px] cursor-pointer hover:text-bg-card-color hover:bg-[#bdbdbd] transition duration-300"
               onClick={() => handleOptionClick("byDate=false")}
             >
-              Newest events{" "}
+              Newest{" "}
             </li>
             <li
               className="py-[4px] px-[8px] rounded-[10px] cursor-pointer hover:text-bg-card-color hover:bg-[#bdbdbd] transition duration-300"
               onClick={() => handleOptionClick("byDate=true")}
             >
-              Oldest events
+              Oldest
             </li>
 
             <li

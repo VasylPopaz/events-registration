@@ -26,7 +26,7 @@ export const ScrollUpBtn = () => {
     });
   };
 
-  return isVisible ? (
+  return (
     <button
       className={`${
         isVisible ? "scroll-up-btn opacity-[1] visible" : " scroll-up-btn"
@@ -36,5 +36,5 @@ export const ScrollUpBtn = () => {
     >
       <IoArrowUpSharp className="w-[30px] h-[30px]" />
     </button>
-  ) : null;
+  );
 };
