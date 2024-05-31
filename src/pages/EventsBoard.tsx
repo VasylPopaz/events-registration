@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
-import { EventsList, ScrollUpBtn, Sort, Loader } from "../components";
+import { EventsList, Sort, Loader } from "../components";
 
 import { getEvents } from "../api";
 import { IEvent } from "../types";
@@ -77,7 +77,6 @@ const EventsBoard = () => {
         <>
           <Sort onChange={handleChangeSort} />
           <EventsList events={sortedEvents} />
-          <ScrollUpBtn />
         </>
       ) : null}
     </section>

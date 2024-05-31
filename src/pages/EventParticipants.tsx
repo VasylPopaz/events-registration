@@ -5,7 +5,6 @@ import { toast } from "react-toastify";
 import {
   Filter,
   ParticipantsList,
-  ScrollUpBtn,
   Loader,
   Chart,
 } from "../components";
@@ -68,7 +67,6 @@ const EventParticipants = () => {
         </h2>
       ) : null}
       <ParticipantsList participants={sortedParticipants} />
-      <ScrollUpBtn />
     </section>
   );
 };
