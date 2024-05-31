@@ -1,11 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 import { MdKeyboardArrowDown, MdKeyboardArrowUp } from "react-icons/md";
 
-import { getSortValue } from "../../helpers";
+import { statuses } from "../../constants";
 
 export const Sort = ({ onChange }: { onChange: (option: string) => void }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [sortBy, setSortBy] = useState("");
+  const [sortBy, setSortBy] = useState("None");
 
   const dropdownRef = useRef<HTMLDivElement>(null);
 
@@ -26,10 +26,10 @@ export const Sort = ({ onChange }: { onChange: (option: string) => void }) => {
     handleToggle();
   };
 
-  const handleOptionClick = (option: string) => {
+  const handleOptionClick = (label: string, value: string) => {
     setIsOpen(false);
-    setSortBy(option);
-    onChange(option);
+    setSortBy(label);
+    onChange(value);
   };
 
   const handleClickOutside = (e: MouseEvent) => {
@@ -46,10 +46,10 @@ export const Sort = ({ onChange }: { onChange: (option: string) => void }) => {
       <p className="font-semibold text-[30px] text-left">Sort By:</p>
       <div className="relative inline-block w-[200px]" ref={dropdownRef}>
         <div
-          className="flex justify-between py-[10px] px-[20px] bg-bg-card-color text-[white] rounded-[10px] cursor-pointer hover:text-bg-card-color hover:bg-[#bdbdbd] transition duration-300"
+          className="flex justify-between items-center py-[10px] px-[20px] bg-[#27303a] text-[white] rounded-[10px] cursor-pointer hover:text-bg-card-color hover:bg-[#bdbdbd] transition duration-300"
           onClick={handleToggle}
         >
-          {getSortValue(sortBy)}
+          {sortBy}
           {isOpen ? (
             <MdKeyboardArrowUp size={20} onClick={handleIconClick} />
           ) : (
@@ -57,50 +57,17 @@ export const Sort = ({ onChange }: { onChange: (option: string) => void }) => {
           )}
         </div>
         {isOpen && (
-          <ul className="py-[10px] px-[20px] bg-bg-card-color rounded-[10px] overflow-hidden w-[200px] block absolute z-[1]  text-[white]  ">
-            <li
-              className="py-[4px] px-[8px] rounded-[10px] cursor-pointer hover:text-bg-card-color hover:bg-[#bdbdbd] transition duration-300"
-              onClick={() => handleOptionClick("")}
-            >
-              None
-            </li>
-            <li
-              className="py-[4px] px-[8px] rounded-[10px] cursor-pointer hover:text-bg-card-color hover:bg-[#bdbdbd] transition duration-300"
-              onClick={() => handleOptionClick("byDate=false")}
-            >
-              Newest{" "}
-            </li>
-            <li
-              className="py-[4px] px-[8px] rounded-[10px] cursor-pointer hover:text-bg-card-color hover:bg-[#bdbdbd] transition duration-300"
-              onClick={() => handleOptionClick("byDate=true")}
-            >
-              Oldest
-            </li>
-
-            <li
-              className="py-[4px] px-[8px] rounded-[10px] cursor-pointer hover:text-bg-card-color hover:bg-[#bdbdbd] transition duration-300"
-              onClick={() => handleOptionClick("byTitle=true")}
-            >
-              Title A-Z
-            </li>
-            <li
-              className="py-[4px] px-[8px] rounded-[10px] cursor-pointer hover:text-bg-card-color hover:bg-[#bdbdbd] transition duration-300"
-              onClick={() => handleOptionClick("byTitle=false")}
-            >
-              Title Z-A
-            </li>
-            <li
-              className="py-[4px] px-[8px] rounded-[10px] cursor-pointer hover:text-bg-card-color hover:bg-[#bdbdbd] transition duration-300"
-              onClick={() => handleOptionClick("byOrganizer=true")}
-            >
-              Organizer A-Z
-            </li>
-            <li
-              className="py-[4px] px-[8px] rounded-[10px] cursor-pointer hover:text-[#0e223b] hover:bg-[#bdbdbd] transition duration-300"
-              onClick={() => handleOptionClick("byOrganizer=false")}
-            >
-              Organizer Z-A
-            </li>
+          <ul className="py-[10px] px-[12px] bg-[#27303a] rounded-[10px] overflow-hidden w-[200px] block absolute z-[1]  text-[white] space-y-1 ">
+            {statuses.map(({ label, value }, index) => (
+              <li
+                key={index}
+                style={label === sortBy ? { backgroundColor: "#6b7279" } : {}}
+                className="py-[4px] px-[8px] rounded-[10px] cursor-pointer hover:text-bg-card-color hover:bg-[#bdbdbd] transition duration-300"
+                onClick={() => handleOptionClick(label, value)}
+              >
+                {label}
+              </li>
+            ))}
           </ul>
         )}
       </div>

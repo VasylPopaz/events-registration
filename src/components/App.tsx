@@ -8,7 +8,7 @@ const EventRegistration = lazy(() => import("../pages/EventRegistration"));
 const EventParticipants = lazy(() => import("../pages/EventParticipants"));
 const EventsBoard = lazy(() => import("../pages/EventsBoard"));
 
-function App() {
+export const App = () => {
   return (
     <Routes>
       <Route element={<SharedLayout />}>
@@ -20,6 +20,4 @@ function App() {
       </Route>
     </Routes>
   );
-}
-
-export default App;
+};

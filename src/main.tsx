@@ -4,7 +4,7 @@ import { ToastContainer } from "react-toastify";
 import "modern-normalize/modern-normalize.css";
 import "react-toastify/dist/ReactToastify.css";
 
-import App from "./components/App";
+import { App } from "./components";
 
 import "./index.css";
 
