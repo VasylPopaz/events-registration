@@ -5,12 +5,12 @@ import { EventsList, Sort, Loader } from "../components";
 
 import { getEvents } from "../api";
 import { IEvent } from "../types";
-import { getSortedEvents } from "../helpers";
 
 const EventsBoard = () => {
   const [events, setEvents] = useState<IEvent[]>([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [sortBy, setSortBy] = useState("");
+  const [sortValue, setSortValue] = useState<string>("");
+  const [sortLabel, setSortLabel] = useState<string>("None");
   const [page, setPage] = useState(1);
   const [isFetching, setIsFetching] = useState(true);
   const [totalEvents, setTotalEvents] = useState(0);
@@ -40,7 +40,7 @@ const EventsBoard = () => {
   useEffect(() => {
     if (isFetching) {
       setIsLoading(true);
-      getEvents(page, "")
+      getEvents(page, sortValue)
         .then((res) => {
           setEvents([...events, ...res.events]);
           setTotalEvents(res.totalEvents);
@@ -62,21 +62,24 @@ const EventsBoard = () => {
           setIsFetching(false);
         });
     }
-  }, [events, isFetching, page, sortBy, totalEvents]);
+  }, [events, isFetching, page, sortValue, totalEvents]);
 
-  const handleChangeSort = (option: string) => {
-    setSortBy(option);
+  const handleChangeSort = (label: string, value: string) => {
+    setSortLabel(label);
+    setSortValue(value);
+    setPage(1);
+    setEvents([]);
+    setIsFetching(true);
   };
-
-  const sortedEvents = getSortedEvents(events, sortBy);
+  if (!events.length) return <Loader />;
 
   return (
     <section className="container py-[40px]">
       {isLoading && <Loader />}
       {events.length ? (
         <>
-          <Sort onChange={handleChangeSort} />
-          <EventsList events={sortedEvents} />
+          <Sort onChange={handleChangeSort} sortLabel={sortLabel} />
+          <EventsList events={events} />
         </>
       ) : null}
     </section>

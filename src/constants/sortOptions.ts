@@ -1,4 +1,4 @@
-export const statuses = [
+export const sortOptions = [
   { label: "None", value: "" },
   { label: "Newest", value: "byDate=false" },
   { label: "Oldest", value: "byDate=true" },
